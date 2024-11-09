@@ -3,14 +3,8 @@ int numOddStars = 20;
 
 Star[] stars = new Star[numStars];
 
-// image layers
-PGraphics mainImage;
-
 void setup() {
   size(800, 500);
-  
-  // iniiate the layers
-  mainImage = createGraphics(width, height);
   
   // create stars
   for (int i = 0; i < stars.length-numOddStars; i++) {
@@ -22,19 +16,13 @@ void setup() {
 }
 
 void draw() {
-  mainImage.beginDraw();
-  
-  mainImage.background(0);
-  mainImage.translate(width/2, height/2);  // set 0,0 at the center of screen
+  background(0);
+  translate(width/2, height/2);  // set 0,0 at the center of screen
   
   for (int i = 0; i < stars.length; i++) {
     stars[i].update();
     stars[i].show();
   }
-  
-  mainImage.endDraw();
-  
-  image(mainImage, 0, 0);
 }
 
 // Star //
@@ -80,9 +68,9 @@ class Star {
     pz = z;
 
     // Draw star streak
-    mainImage.stroke(sColor, map((float)z, 0, width, 255, 20));
-    mainImage.strokeWeight(map((float)z, 0, width, (float)size, 0)); // Thickness decreases with distance
-    mainImage.line((float)x1, (float)y1, (float)x2, (float)y2);
+    stroke(sColor, map((float)z, 0, width, 255, 20));
+    strokeWeight(map((float)z, 0, width, (float)size, 0)); // Thickness decreases with distance
+    line((float)x1, (float)y1, (float)x2, (float)y2);
   }
 }
 
